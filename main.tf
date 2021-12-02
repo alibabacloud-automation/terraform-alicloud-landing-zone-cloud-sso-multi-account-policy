@@ -7,11 +7,17 @@ resource "alicloud_cloud_sso_directory" "this" {
   scim_synchronization_status = var.scim_synchronization_status
 }
 
+# Fetch the existing resource manager folders
+data "alicloud_resource_manager_folders" "this" {
+  parent_folder_id = var.parent_folder_id
+  name_regex       = var.folder_name
+}
+
 # Create a resource manager account
 resource "alicloud_resource_manager_account" "this" {
   count            = var.create_resource_manager_account ? 1 : 0
   display_name     = var.display_name
-  folder_id        = var.folder_id
+  folder_id        = local.this_folder_id
   payer_account_id = var.payer_account_id
 }
 
@@ -31,7 +37,7 @@ data "alicloud_cloud_sso_access_configurations" "this" {
 
 # Using the cloud sso group and access configurations and configure the resource account
 resource "alicloud_cloud_sso_access_assignment" "default" {
-  count                   = var.create_resource_manager_account && local.this_directory_id != "" && length(data.alicloud_cloud_sso_groups.this.groups) > 0 ? length(local.matched_access_configurations) : 0
+  count                   = var.assign_access_configuration && var.create_resource_manager_account && local.this_directory_id != "" && length(data.alicloud_cloud_sso_groups.this.groups) > 0 ? length(local.matched_access_configurations) : 0
   directory_id            = local.this_directory_id
   access_configuration_id = local.matched_access_configurations[count.index].access_configuration_id
   target_type             = "RD-Account"
