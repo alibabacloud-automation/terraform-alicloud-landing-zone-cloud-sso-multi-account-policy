@@ -5,6 +5,9 @@ locals {
   this_account_id   = concat(alicloud_resource_manager_account.this.*.id, [""])[0]
   matched_groups    = data.alicloud_cloud_sso_groups.this.groups
 
+  # Get a folder id from datasource
+  this_folder_id = var.folder_id != "" ? var.folder_id : var.folder_name != "" ? concat(data.alicloud_resource_manager_folders.this.folders.*.folder_id, [""])[0] : ""
+
   # Split all filtered group names and then using them to locate eligible access configurations
   matched_group_names_split     = distinct(flatten([for group in local.matched_groups : split(format("%s-", var.display_name), group.group_name)]))
   matched_access_configurations = [for ac in data.alicloud_cloud_sso_access_configurations.this.configurations : ac if contains(local.matched_group_names_split, ac.access_configuration_name)]

@@ -30,7 +30,7 @@ variable "scim_synchronization_status" {
 }
 
 #####################
-# Cloud SSO Group
+# Resource Manager Account
 #####################
 variable "create_resource_manager_account" {
   description = "Controls if cloud sso user should be created"
@@ -43,11 +43,6 @@ variable "display_name" {
   type        = string
   default     = ""
 }
-variable "folder_id" {
-  description = "The ID of the parent folder for resource manager account"
-  type        = string
-  default     = ""
-}
 variable "payer_account_id" {
   description = "Settlement account ID. If the value is empty, the current account will be used for settlement."
   type        = string
@@ -55,8 +50,34 @@ variable "payer_account_id" {
 }
 
 #####################
-# Cloud SSO User Group
+# Resource Manager Folder
 #####################
+variable "folder_id" {
+  description = "The ID of an existing folder used to create a resource manager account. If not set, it can be fetched by parent_folder_id and folder_name."
+  type        = string
+  default     = ""
+}
+variable "parent_folder_id" {
+  description = "The ID of the parent folder used to fetch the existing folders"
+  type        = string
+  default     = ""
+}
+
+variable "folder_name" {
+  description = "The name used to fetch one existed."
+  type        = string
+  default     = ""
+}
+
+#####################
+# Cloud SSO Access Assignment
+#####################
+variable "assign_access_configuration" {
+  description = "Controls if assign access permissions on the account."
+  type        = bool
+  default     = false
+}
+
 variable "user_group_name_regex" {
   description = "A name regex used to fetch cloud sso groups and then add new cloud sso user to them automatically"
   type        = string

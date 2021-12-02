@@ -2,8 +2,12 @@ output "this_directory" {
   description = "The id of cloud sso directory of this module used."
   value       = local.this_directory_id
 }
+output "this_folder_id" {
+  description = "The id of resource manager folder."
+  value       = local.this_folder_id
+}
 output "this_account_id" {
-  description = "The id of resource account."
+  description = "The id of resource manager account."
   value       = local.this_account_id
 }
 output "this_group_ids" {
