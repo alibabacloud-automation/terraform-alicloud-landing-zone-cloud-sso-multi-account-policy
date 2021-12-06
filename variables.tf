@@ -52,19 +52,20 @@ variable "payer_account_id" {
 #####################
 # Resource Manager Folder
 #####################
-variable "folder_id" {
-  description = "The ID of an existing folder used to create a resource manager account. If not set, it can be fetched by parent_folder_id and folder_name."
-  type        = string
-  default     = ""
+variable "create_resource_manager_folder" {
+  description = "Controls if resource manager folder should be created when there is no folder named with `folder_name` value."
+  type        = bool
+  default     = false
 }
+
 variable "parent_folder_id" {
-  description = "The ID of the parent folder used to fetch the existing folders"
+  description = "The ID of the parent folder used to fetch the existing folders or create a new folder."
   type        = string
   default     = ""
 }
 
 variable "folder_name" {
-  description = "The name used to fetch one existed."
+  description = "The name used to fetch one existed or create a new folder"
   type        = string
   default     = ""
 }
@@ -78,8 +79,8 @@ variable "assign_access_configuration" {
   default     = false
 }
 
-variable "user_group_name_regex" {
-  description = "A name regex used to fetch cloud sso groups and then add new cloud sso user to them automatically"
+variable "cloud_sso_group_name" {
+  description = "A name used to fetch cloud sso groups and then add new cloud sso user to them automatically"
   type        = string
   default     = ""
 }
