@@ -16,7 +16,7 @@ data "alicloud_resource_manager_folders" "this" {
 
 # Create a new resource manager folder when there is no folder named with `folder_name` value
 resource "alicloud_resource_manager_folder" "this" {
-  count            = var.folder_name == "" ? 0 : length(data.alicloud_resource_manager_folders.this.folders) > 0 ? 0 : var.create_resource_manager_folder ? 1 : 0
+  count            = var.folder_name == "" ? 0 : var.create_resource_manager_folder ? 1 : 0
   parent_folder_id = var.parent_folder_id
   folder_name      = var.folder_name
 }
