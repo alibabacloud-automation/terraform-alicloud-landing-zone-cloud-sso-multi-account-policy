@@ -1,7 +1,7 @@
 locals {
   # If self-define filter condition is not set, using account name as default filter value.
-  group_name_regex  = var.cloud_sso_group_name == "" ? format(".*%s", var.display_name) : var.cloud_sso_group_name
-  this_directory_id = var.create_directory ? concat(alicloud_cloud_sso_directory.this.*.id, [""])[0] : var.directory_id
+  group_name_regex  = var.cloud_sso_group_name_regex == "" ? format(".*%s", var.display_name) : var.cloud_sso_group_name_regex
+  this_directory_id = var.create_directory ? concat(alicloud_cloud_sso_directory.this.*.id, [""])[0] : var.directory_id != "" ? var.directory_id : concat(data.alicloud_cloud_sso_directories.default.ids, [""])[0]
   this_account_id   = concat(alicloud_resource_manager_account.this.*.id, [""])[0]
   matched_groups    = data.alicloud_cloud_sso_groups.this.groups
 

@@ -1,5 +1,6 @@
 # The cloud sso directory id is the precondition of other cloud sso resources
-# In this module, you can specify an existing directory id or create a new one using this resource
+# In this module, you can specify an existing directory id or get default directory by datasource or create a new one using this resource
+data "alicloud_cloud_sso_directories" "default" {}
 resource "alicloud_cloud_sso_directory" "this" {
   count                       = var.create_directory == true ? 1 : 0
   directory_name              = var.directory_name
