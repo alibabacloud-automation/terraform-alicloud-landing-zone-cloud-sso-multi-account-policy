@@ -79,8 +79,8 @@ variable "assign_access_configuration" {
   default     = false
 }
 
-variable "cloud_sso_group_name" {
-  description = "A name used to fetch cloud sso groups and then add new cloud sso user to them automatically"
+variable "cloud_sso_group_name_regex" {
+  description = "A name regex used to fetch cloud sso groups and then add new cloud sso user to them automatically"
   type        = string
   default     = ""
 }
