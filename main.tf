@@ -45,7 +45,7 @@ data "alicloud_cloud_sso_access_configurations" "this" {
 
 # Using the cloud sso group and access configurations and configure the resource account
 resource "alicloud_cloud_sso_access_assignment" "default" {
-  count                   = var.assign_access_configuration && var.create_resource_manager_account && local.this_directory_id != "" && length(data.alicloud_cloud_sso_groups.this.groups) > 0 ? length(local.matched_access_configurations) : 0
+  count                   = var.assign_access_configuration && local.this_account_id != "" && local.this_directory_id != "" && length(data.alicloud_cloud_sso_groups.this.groups) > 0 ? length(local.matched_access_configurations) : 0
   directory_id            = local.this_directory_id
   access_configuration_id = local.matched_access_configurations[count.index].access_configuration_id
   target_type             = "RD-Account"
