@@ -38,6 +38,23 @@ parent_folder_id               = "rd-xxxxx"
 folder_name                    = "appname"
 ```
 
+## Resource Manager Account
+
+This module support to specify an existing resource manager account by specifying the following parameters:
+
+```terraform
+create_resource_manager_account = false
+account_id                      = "rd-xxxxx"
+```
+
+Or, create a new account by specifying the following parameters:
+
+```terraform
+create_resource_manager_account = true
+display_name                    = var.display_name
+payer_account_id                = var.payer_account_id
+```
+
 ## Cloud SSO User Group And Access Configurations
 
 In the cloud sso multi-account policy management scenario, each account needs in turn to set user group and access configuration.
