@@ -38,6 +38,12 @@ variable "create_resource_manager_account" {
   default     = true
 }
 
+variable "account_id" {
+  description = "The id of an existing resource account. It will be ignored when `create_resource_manager_account` is true."
+  type        = string
+  default     = ""
+}
+
 variable "display_name" {
   description = "The name of resource manager account. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-)."
   type        = string

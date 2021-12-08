@@ -37,6 +37,23 @@ parent_folder_id               = "rd-xxxxx"
 folder_name                    = "appname"
 ```
 
+## 成员账号
+
+本 Module 支持通过如下的参数获取设置存量的成员账号：
+
+```terraform
+create_resource_manager_account = false
+account_id                      = "rd-xxxxx"
+```
+
+同时，本 Module 也支持创建一个新的成员账号：
+
+```terraform
+create_resource_manager_account = true
+display_name                    = var.display_name
+payer_account_id                = var.payer_account_id
+```
+
 ## 用户组和访问配置
 
 在多账号权限管理场景中，每个成员账号需要依次指定用户组和访问配置。为了让多账号管理更便捷，权限配置遵循如下的设置规则：
