@@ -4,7 +4,7 @@
 variable "create_directory" {
   description = "Controls if cloud sso directory should be created (it affects almost all resources)"
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "directory_id" {
@@ -35,7 +35,7 @@ variable "scim_synchronization_status" {
 variable "create_resource_manager_account" {
   description = "Controls if cloud sso user should be created"
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "account_id" {

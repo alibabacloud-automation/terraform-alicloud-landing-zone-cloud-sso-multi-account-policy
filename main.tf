@@ -2,7 +2,7 @@
 # In this module, you can specify an existing directory id or get default directory by datasource or create a new one using this resource
 data "alicloud_cloud_sso_directories" "default" {}
 resource "alicloud_cloud_sso_directory" "this" {
-  count                       = var.create_directory && length(data.alicloud_cloud_sso_directories.default.ids) == 0 ? 1 : 0
+  count                       = var.create_directory ? 1 : 0
   directory_name              = var.directory_name
   mfa_authentication_status   = var.mfa_authentication_status
   scim_synchronization_status = var.scim_synchronization_status
@@ -16,7 +16,7 @@ data "alicloud_resource_manager_folders" "this" {
 
 # Create a new resource manager folder when there is no folder named with `folder_name` value
 resource "alicloud_resource_manager_folder" "this" {
-  count            = var.folder_name == "" ? 0 : var.create_resource_manager_folder && length(data.alicloud_resource_manager_folders.this.ids) == 0 ? 1 : 0
+  count            = var.folder_name == "" ? 0 : var.create_resource_manager_folder ? 1 : 0
   parent_folder_id = var.parent_folder_id
   folder_name      = var.folder_name
 }

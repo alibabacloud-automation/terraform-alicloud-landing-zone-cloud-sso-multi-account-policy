@@ -85,7 +85,7 @@ scim_synchronization_status = "Enabled"
 
 ## 示例
 
-- [基本](https://github.com/terraform-alicloud-modules/terraform-alicloud-cloud-sso-multi-account-policy/tree/master/examples/basic)
+- [完整示例](https://github.com/terraform-alicloud-modules/terraform-alicloud-cloud-sso-multi-account-policy/tree/master/examples/complete)
 
 ## 贡献
 
