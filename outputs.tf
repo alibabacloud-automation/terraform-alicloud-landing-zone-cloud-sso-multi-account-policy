@@ -6,6 +6,10 @@ output "folder_id" {
   description = "The id of resource manager folder."
   value       = local.this_folder_id
 }
+output "folder_name" {
+  description = "The name of resource manager folder."
+  value       = var.folder_name
+}
 output "account_id" {
   description = "The id of resource manager account."
   value       = local.this_account_id
