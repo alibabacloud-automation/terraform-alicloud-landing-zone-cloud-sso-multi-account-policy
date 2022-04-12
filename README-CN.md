@@ -1,4 +1,4 @@
-# terraform-alicloud-cloud-sso-multi-account-policy
+# terraform-alicloud-landing-zone-cloud-sso-multi-account-policy
 
 本 Module 用于阿里云 Cloud SSO 的多账号权限管理
 
@@ -6,7 +6,7 @@
 
 ```terraform
 module "cloud_sso" {
-  source = "terraform-alicloud-modules/cloud-sso-multi-account-policy/alicloud"
+  source = "terraform-alicloud-modules/landing-zone-cloud-sso-multi-account-policy/alicloud"
 
   create_directory                = false
   directory_id                    = data.alicloud_cloud_sso_directories.default.ids.0

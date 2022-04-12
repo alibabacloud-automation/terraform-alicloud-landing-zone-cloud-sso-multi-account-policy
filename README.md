@@ -1,4 +1,4 @@
-# terraform-alicloud-cloud-sso-multi-account-policy
+# terraform-alicloud-landing-zone-cloud-sso-multi-account-policy
 
 Terraform module which creates RD account and manage it policy by cloud sso on Alibaba Cloud.
 
@@ -6,7 +6,7 @@ Terraform module which creates RD account and manage it policy by cloud sso on A
 
 ```terraform
 module "cloud_sso" {
-  source = "terraform-alicloud-modules/cloud-sso-multi-account-policy/alicloud"
+  source = "terraform-alicloud-modules/landing-zone-cloud-sso-multi-account-policy/alicloud"
 
   create_directory                = false
   directory_id                    = data.alicloud_cloud_sso_directories.default.ids.0
