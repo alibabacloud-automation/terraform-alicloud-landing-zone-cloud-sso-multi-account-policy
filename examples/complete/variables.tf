@@ -68,12 +68,6 @@ variable "assign_access_configuration" {
   default     = false
 }
 
-variable "deprovision_strategy" {
-  description = "The deprovision strategy. See https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/cloud_sso_access_assignment#deprovision_strategy"
-  type        = string
-  default     = "DeprovisionForLastAccessAssignmentOnAccount"
-}
-
 #####################
 # Cloud SSO Group and Access Configurations
 #####################

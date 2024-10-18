@@ -1,20 +1,13 @@
 provider "alicloud" {
   region = "cn-shanghai"
 }
-data "terraform_remote_state" "local" {
-  backend = "local"
-
-  config = {
-    path = "terraform.tfstate"
-  }
-}
 
 locals {
-  last_create_directory               = lookup(data.terraform_remote_state.local.outputs, "create_directory", false)
-  last_create_resource_manager_folder = lookup(data.terraform_remote_state.local.outputs, "create_resource_manager_folder", false)
+  last_create_directory               = false
+  last_create_resource_manager_folder = false
 }
 
-// Step1: create a new directory and a new folder
+# Step1: create a new directory and a new folder
 
 # Fetch the existing resource manager folders and directories
 data "alicloud_cloud_sso_directories" "this" {}
@@ -32,9 +25,11 @@ module "directory" {
   folder_name                    = var.folder_name
 }
 
-// Step2: create two groups and access configurations using existing directory
+# Step2: create two groups and access configurations using existing directory
 module "group1" {
-  source           = "terraform-alicloud-modules/cloud-sso/alicloud"
+  source  = "terraform-alicloud-modules/cloud-sso/alicloud"
+  version = "1.0.0"
+
   create_directory = false
   directory_id     = module.directory.directory_id
 
@@ -74,7 +69,9 @@ module "group1" {
 }
 
 module "group2" {
-  source           = "terraform-alicloud-modules/cloud-sso/alicloud"
+  source  = "terraform-alicloud-modules/cloud-sso/alicloud"
+  version = "1.0.0"
+
   create_directory = false
   directory_id     = module.directory.directory_id
 
@@ -112,8 +109,7 @@ module "group2" {
   ]
 }
 
-data "alicloud_account" "this" {}
-// Step3: create a new RD account and assign the cloud sso policy
+# Step3: create a new RD account and assign the cloud sso policy
 module "multi-account" {
   source           = "../../"
   create_directory = false
