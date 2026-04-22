@@ -1,3 +1,14 @@
+## [2.0.0](https://github.com/alibabacloud-automation/terraform-alicloud-landing-zone-cloud-sso-multi-account-policy/compare/v1.1.0...v2.0.0) (2026-04-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* add provider version constraint for aliyun/alicloud
+
+### Features
+
+* add provider version constraint for aliyun/alicloud ([ca66ae9](https://github.com/alibabacloud-automation/terraform-alicloud-landing-zone-cloud-sso-multi-account-policy/commit/ca66ae9cda3bd9e806f6c35028f5e96e77285876))
+
 ## 1.2.0 (Unreleased)
 ## 1.1.0 (2024-10-18)
 
