@@ -28,7 +28,7 @@ module "directory" {
 # Step2: create two groups and access configurations using existing directory
 module "group1" {
   source  = "terraform-alicloud-modules/cloud-sso/alicloud"
-  version = "1.0.0"
+  version = "2.0.0"
 
   create_directory = false
   directory_id     = module.directory.directory_id
@@ -70,7 +70,7 @@ module "group1" {
 
 module "group2" {
   source  = "terraform-alicloud-modules/cloud-sso/alicloud"
-  version = "1.0.0"
+  version = "2.0.0"
 
   create_directory = false
   directory_id     = module.directory.directory_id
